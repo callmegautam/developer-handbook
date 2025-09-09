@@ -25,18 +25,6 @@ flowchart TD
     J --> L
     K --> L
 
-    %% Clickable links for Markdown/Obsidian
-    click A "./01_aws-instance-setup.md" "Open AWS Instance Setup"
-    click B "./01_aws-instance-setup.md" "System setup commands"
-    click C "./02_node-installation.md" "Node.js installation guide"
-    click D "./03_pm2-setup.md" "PM2 process manager guide"
-    click E "./04_nginx-setup.md" "Nginx reverse proxy guide"
-    click F "./04_nginx-ssl-setup.md" "HTTPS setup with Certbot"
-    click I "./05_postgresql-setup.md" "PostgreSQL setup guide"
-    click J "./05_mysql-setup.md" "MySQL setup guide"
-    click K "./06_firewall-setup.md" "Firewall/UFW setup guide"
-    click L "./00_deployment-workflow.md" "Final deployment workflow"
-
 ```
 
 ## 1. Launch AWS Instance
