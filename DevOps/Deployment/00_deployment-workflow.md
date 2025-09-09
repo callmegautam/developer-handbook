@@ -108,8 +108,8 @@ Follow [`firewall-setup.md`](06_firewall-setup.md) to:
 
 Following this workflow sets up a **production-ready AWS instance** with Node.js, PM2, Nginx, a database, and basic firewall security. All individual guides can be referenced for detailed steps.
 
-
-flowchart TD
+```mermaid
+	flowchart TD
     A[AWS EC2 Instance] -->|SSH & update| B[System Setup]
 
     B -->|Install Node.js| C[Node.js & npm]
@@ -140,3 +140,5 @@ flowchart TD
     click J "./mysql-setup.md" "MySQL setup guide"
     click K "./firewall-setup.md" "Firewall/UFW setup guide"
     click L "./deployment-workflow.md" "Final deployment workflow"
+
+```
