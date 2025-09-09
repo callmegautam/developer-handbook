@@ -4,6 +4,8 @@ This guide combines all individual setup guides into a single workflow, from lau
 
 ---
 
+![[deployment-workflow.png]]
+
 ## 1. Launch AWS Instance
 
 Follow [`aws-instance-setup.md`](01_aws-instance-setup.md) to:
@@ -104,40 +106,9 @@ Follow [`firewall-setup.md`](06_firewall-setup.md) to:
 - Test database connection strings from your application.
     
 
+
+
 ---
 
 Following this workflow sets up a **production-ready AWS instance** with Node.js, PM2, Nginx, a database, and basic firewall security. All individual guides can be referenced for detailed steps.
 
-```mermaid
-	flowchart TD
-    A[AWS EC2 Instance] -->|SSH & update| B[System Setup]
-
-    B -->|Install Node.js| C[Node.js & npm]
-    C -->|Start apps| D[PM2 Setup]
-    D -->|Configure reverse proxy| E[Nginx Setup]
-    E -->|Enable HTTPS| F[Nginx SSL Setup]
-    
-    E -->|Connect DB| G[Database Setup]
-    G --> H{Choose DB}
-    H --> I[PostgreSQL Setup]
-    H --> J[MySQL Setup]
-
-    B -->|Secure server| K[Firewall Setup]
-    
-    F --> L[Application Live]
-    I --> L
-    J --> L
-    K --> L
-
-    %% Clickable links for Markdown/Obsidian
-		click A "./01_aws-instance-setup.md" "Open AWS Instance Setup"
-		click C "./02_node-installation.md" "Node.js installation guide"
-		click D "./03_pm2-setup.md" "PM2 process manager guide"
-		click E "./04_nginx-setup.md" "Nginx reverse proxy guide"
-		click F "./05_nginx-ssl-setup.md" "HTTPS setup with Certbot"
-		click I "./06_postgresql-setup.md" "PostgreSQL setup guide"
-		click J "./07_mysql-setup.md" "MySQL setup guide"
-		click K "./08_firewall-setup.md" "Firewall/UFW setup guide"
-		click L "./00_deployment-workflow.md" "Final deployment workflow"
-
-```
