@@ -4,7 +4,40 @@ This guide combines all individual setup guides into a single workflow, from lau
 
 ---
 
-![[deployment-workflow.png]]
+```mermaid
+flowchart TD
+    A[AWS EC2 Instance] -->|SSH & update| B[System Setup]
+
+    B -->|Install Node.js| C[Node.js & npm]
+    C -->|Start apps| D[PM2 Setup]
+    D -->|Configure reverse proxy| E[Nginx Setup]
+    E -->|Enable HTTPS| F[Nginx SSL Setup]
+    
+    E -->|Connect DB| G[Database Setup]
+    G --> H{Choose DB}
+    H --> I[PostgreSQL Setup]
+    H --> J[MySQL Setup]
+
+    B -->|Secure server| K[Firewall Setup]
+    
+    F --> L[Application Live]
+    I --> L
+    J --> L
+    K --> L
+
+    %% Clickable links for Markdown/Obsidian
+    click A "./01_aws-instance-setup.md" "Open AWS Instance Setup"
+    click B "./01_aws-instance-setup.md" "System setup commands"
+    click C "./02_node-installation.md" "Node.js installation guide"
+    click D "./03_pm2-setup.md" "PM2 process manager guide"
+    click E "./04_nginx-setup.md" "Nginx reverse proxy guide"
+    click F "./04_nginx-ssl-setup.md" "HTTPS setup with Certbot"
+    click I "./05_postgresql-setup.md" "PostgreSQL setup guide"
+    click J "./05_mysql-setup.md" "MySQL setup guide"
+    click K "./06_firewall-setup.md" "Firewall/UFW setup guide"
+    click L "./00_deployment-workflow.md" "Final deployment workflow"
+
+```
 
 ## 1. Launch AWS Instance
 
