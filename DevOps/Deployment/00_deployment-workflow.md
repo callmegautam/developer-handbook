@@ -6,7 +6,7 @@ This guide combines all individual setup guides into a single workflow, from lau
 
 ## 1. Launch AWS Instance
 
-Follow [`aws-instance-setup.md`](01. aws-instance-setup.md) to:
+Follow [`aws-instance-setup.md`](01_aws-instance-setup.md) to:
 
 - Launch an Ubuntu EC2 instance.
     
@@ -19,7 +19,7 @@ Follow [`aws-instance-setup.md`](01. aws-instance-setup.md) to:
 
 ## 2. Install Node.js
 
-Follow [`node-installation.md`](https://chatgpt.com/c/node-installation.md) to:
+Follow [`node-installation.md`](02_node-installation.md) to:
 
 - Add NodeSource repository.
     
@@ -32,7 +32,7 @@ Follow [`node-installation.md`](https://chatgpt.com/c/node-installation.md) to:
 
 ## 3. Setup PM2
 
-Follow [`pm2-setup.md`](https://chatgpt.com/c/pm2-setup.md) to:
+Follow [`pm2-setup.md`](03_pm2-setup.md) to:
 
 - Install PM2 globally.
     
@@ -45,7 +45,7 @@ Follow [`pm2-setup.md`](https://chatgpt.com/c/pm2-setup.md) to:
 
 ## 4. Configure Nginx
 
-Follow [`nginx-setup.md`](https://chatgpt.com/c/nginx-setup.md) to:
+Follow [`nginx-setup.md`](04_nginx-setup.md) to:
 
 - Install Nginx.
     
@@ -60,9 +60,9 @@ Optionally, set up HTTPS with [`nginx-ssl-setup.md`](https://chatgpt.com/c/nginx
 
 Choose your database:
 
-- **PostgreSQL**: [`postgresql-setup.md`](https://chatgpt.com/c/postgresql-setup.md)
+- **PostgreSQL**: [`postgresql-setup.md`](05_postgresql-setup.md)
     
-- **MySQL**: [`mysql-setup.md`](https://chatgpt.com/c/mysql-setup.md)
+- **MySQL**: [`mysql-setup.md`](05_mysql-setup.md)
     
 
 Create a database, a user, and note the connection string for your app.
@@ -71,7 +71,7 @@ Create a database, a user, and note the connection string for your app.
 
 ## 6. Configure Firewall
 
-Follow [`firewall-setup.md`](https://chatgpt.com/c/firewall-setup.md) to:
+Follow [`firewall-setup.md`](06_firewall-setup.md) to:
 
 - Allow SSH (for management).
     
@@ -106,8 +106,37 @@ Follow [`firewall-setup.md`](https://chatgpt.com/c/firewall-setup.md) to:
 
 ---
 
-✅ Following this workflow sets up a **production-ready AWS instance** with Node.js, PM2, Nginx, a database, and basic firewall security. All individual guides can be referenced for detailed steps.
+Following this workflow sets up a **production-ready AWS instance** with Node.js, PM2, Nginx, a database, and basic firewall security. All individual guides can be referenced for detailed steps.
 
----
 
-If you want, we can also create a **diagram or visual blueprint** for this workflow — makes it super easy to grasp at a glance and looks great in your GitHub README. Do you want me to do that?
+flowchart TD
+    A[AWS EC2 Instance] -->|SSH & update| B[System Setup]
+
+    B -->|Install Node.js| C[Node.js & npm]
+    C -->|Start apps| D[PM2 Setup]
+    D -->|Configure reverse proxy| E[Nginx Setup]
+    E -->|Enable HTTPS| F[Nginx SSL Setup]
+    
+    E -->|Connect DB| G[Database Setup]
+    G --> H{Choose DB}
+    H --> I[PostgreSQL Setup]
+    H --> J[MySQL Setup]
+
+    B -->|Secure server| K[Firewall Setup]
+    
+    F --> L[Application Live]
+    I --> L
+    J --> L
+    K --> L
+
+    %% Clickable links for Markdown/Obsidian
+    click A "./aws-instance-setup.md" "Open AWS Instance Setup"
+    click B "./aws-instance-setup.md" "System setup commands"
+    click C "./node-installation.md" "Node.js installation guide"
+    click D "./pm2-setup.md" "PM2 process manager guide"
+    click E "./nginx-setup.md" "Nginx reverse proxy guide"
+    click F "./nginx-ssl-setup.md" "HTTPS setup with Certbot"
+    click I "./postgresql-setup.md" "PostgreSQL setup guide"
+    click J "./mysql-setup.md" "MySQL setup guide"
+    click K "./firewall-setup.md" "Firewall/UFW setup guide"
+    click L "./deployment-workflow.md" "Final deployment workflow"
