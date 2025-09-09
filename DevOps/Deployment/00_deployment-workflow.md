@@ -130,15 +130,14 @@ Following this workflow sets up a **production-ready AWS instance** with Node.js
     K --> L
 
     %% Clickable links for Markdown/Obsidian
-    click A "./aws-instance-setup.md" "Open AWS Instance Setup"
-    click B "./aws-instance-setup.md" "System setup commands"
-    click C "./node-installation.md" "Node.js installation guide"
-    click D "./pm2-setup.md" "PM2 process manager guide"
-    click E "./nginx-setup.md" "Nginx reverse proxy guide"
-    click F "./nginx-ssl-setup.md" "HTTPS setup with Certbot"
-    click I "./postgresql-setup.md" "PostgreSQL setup guide"
-    click J "./mysql-setup.md" "MySQL setup guide"
-    click K "./firewall-setup.md" "Firewall/UFW setup guide"
-    click L "./deployment-workflow.md" "Final deployment workflow"
+		click A "./01_aws-instance-setup.md" "Open AWS Instance Setup"
+		click C "./02_node-installation.md" "Node.js installation guide"
+		click D "./03_pm2-setup.md" "PM2 process manager guide"
+		click E "./04_nginx-setup.md" "Nginx reverse proxy guide"
+		click F "./05_nginx-ssl-setup.md" "HTTPS setup with Certbot"
+		click I "./06_postgresql-setup.md" "PostgreSQL setup guide"
+		click J "./07_mysql-setup.md" "MySQL setup guide"
+		click K "./08_firewall-setup.md" "Firewall/UFW setup guide"
+		click L "./00_deployment-workflow.md" "Final deployment workflow"
 
 ```
