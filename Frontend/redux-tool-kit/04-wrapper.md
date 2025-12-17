@@ -1,14 +1,30 @@
-# Wrapper
 
-A wrapper is a component that provides a higher-level interface for other components. It is used to encapsulate the logic and state of a component and to provide a more convenient way to use it.
+## `04-provider.md`
 
-### create `App.js` file
+# Provider (Wrapper)
 
-```js
+`Provider` makes the Redux store available to the entire React tree.
+
+## `main.tsx` or `index.tsx`
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './store/store.ts';
+import { store } from './store/store';
+import App from './App';
 
-<Provider store={store}>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <Provider store={store}>
     <App />
-</Provider>;
-```
+  </Provider>
+);
+````
+
+Notes:
+
+- Provider must wrap the app once
+    
+- Never create store inside a component
+
+---

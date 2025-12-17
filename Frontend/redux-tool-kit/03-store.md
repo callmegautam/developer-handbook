@@ -1,34 +1,32 @@
+
+
 # Store
 
-The store is the central hub of the application. It holds the state of the application and provides methods to access and update the state. The store is created using the `createStore` function from the `@reduxjs/toolkit` package.
+The store:
+- holds the entire app state
+- combines all slice reducers
+- provides dispatch + getState
 
-### create `store.js` file
+## `store.ts`
 
-```js
+```ts
 import { configureStore } from '@reduxjs/toolkit';
 import todoReducer from './slices/todoSlice';
 
 export const store = configureStore({
-    reducer: {
-        todos: todoReducer,
-    },
-});
-```
-
-for typescript
-
-# create `store.ts` file
-
-```ts
-import { configureStore } from '@reduxjs/toolkit';
-import todosSlice from './slices/todoSlice';
-
-export const store = configureStore({
-    reducer: {
-        todos: todosSlice,
-    },
+  reducer: {
+    todos: todoReducer,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-```
+````
+
+Notes:
+
+- `configureStore` sets up DevTools + middleware automatically
+    
+- No `createStore` in modern Redux
+
+---
